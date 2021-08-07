@@ -1,28 +1,28 @@
-const Player = require('./Player.js');
-
 class Game {
-  constructor(name) {
-    this.user = new Player(name);
+  constructor() {
+    this.user = new Player('User');
     this.computer = new Player('Computer');
+    this.gameType = null;
   };
 
   keepGameScore() {
 
   };
 
-  checkGameType() {
-    // isClassicSelected = 
-//rules change depending on game type
-//need to make id for each fighter?
+  checkGameType(target) {
+    var isClassicSelected = classicVersion.contains(target);
+    var isDifficultSelected = difficultVersion.contains(target);
 
-//if classic selection clicked
-//hide rules
-//show classic icons
-
-//if difficult selection clicked,
-//hide rules
-//show classic and diffuclt icons
+    if(isClassicSelected) {
+      this.gameType = 'Classic';
+      displayClassicVersion();
+    } 
+    if(isDifficultSelected) {
+      this.gameType = 'Difficult';
+      displayDifficultVersion();
+    }
   };
+
 
   checkWinConditions() {
   //if rock selected, will beat scissors and lizard
