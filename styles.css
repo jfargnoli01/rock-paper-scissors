@@ -45,6 +45,20 @@ h1 {
   margin: 8px 0 72px 0;
 }
 
+.fighter-icons-classic {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 200px;
+  width: 50px;
+}
+
+.fighter-icon {
+  height: 160px;
+  width: 160px;
+  padding: 20px;
+}
+
 .user-score-section,
 .computer-score-section {
   box-sizing: border-box;
