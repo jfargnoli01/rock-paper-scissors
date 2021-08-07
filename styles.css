@@ -20,6 +20,11 @@ body {
   width: 300px;
 }
 
+.classic-rules, 
+.difficult-rules {
+  margin: 2px;
+}
+
 main {
   align-items: center;
   background-color: #F38D4F;
