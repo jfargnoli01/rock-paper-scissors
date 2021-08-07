@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir"ltr">
+  <head>
+    <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="styles.css" type="text/css"> 
+  </head>
+  <body>
+    <section class="user-score-section">
+      <p class="user-emoji">🦄</p>
+      <p class="user-title">User</p>
+      <p class="user-score">Wins: 0</p>
+      <button class="change-game hidden">CHANGE GAME?</button>
+    </section>
+    <main> 
+      <h1>Rock, Paper, Scissors</h1>
+      <h2 class="choose-heading">Choose your game!</h2>
+      <section class="classic-version">CLASSIC
+        <p class="classic-rules">rock > scissors paper > rock scissors > paper</p>
+      </section>
+      <section class="difficult-version">DIFFICULT
+        <p class="difficult-rules">rock > scissors &  paper > rock scissors > paper</p>
+      </section>
+      <section class="fighter-icons-classic hidden">
+        <img class="fighter-icon" src="./assets/happy-rocks.png" alt="rock-icon"/>
+        <img class="fighter-icon" src="./assets/happy-paper.png" alt="paper-icon"/>
+        <img class="fighter-icon" src="./assets/scissors copy.png" alt="scissors-icon"/>
+      </section>
+      <section class="fighter-icons-difficult hidden">
+        <img class="fighter-icon" src="assets/iguana.png" alt="iguana-icon"/>
+        <img class="fighter-icon" src="assets/ufo.png" alt="ufo-icon"/>
+      </section>
+    </main>
+    <section>
+      <p class="computer-emoji">🖥</p>
+      <p class="computer-title">Coputer</p>
+      <p class="computer-score">Wins: 0</p>
+    </section>
+  </body>
+  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="Game.js"></script>
+  <script type="text/javascript" src="Player.js"></script>
+</html>
