@@ -1,9 +1,9 @@
 class Player {
   constructor(name) {
     this.name = name;
-    this.token = 🤓;
+    this.token = name === 'Computer' ? '🖥' : '🤓';
     this.wins = 0;
-  }
+  };
 
   saveWinsToStoarge() {
 
