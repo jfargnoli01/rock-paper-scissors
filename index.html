@@ -3,11 +3,14 @@
   <head>
     <title>Rock, Paper, Scissors</title>
     <link rel="stylesheet" href="styles.css" type="text/css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
   </head>
   <body>
     <section class="user-score-section">
-      <p class="user-emoji">🦄</p>
-      <p class="user-title">User</p>
+      <p class="player-pic">🤓</p>
+      <p class="player-info">User</p>
       <p class="user-score">Wins: 0</p>
       <button class="change-game hidden">CHANGE GAME?</button>
     </section>
@@ -18,7 +21,7 @@
         <p class="classic-rules">rock > scissors paper > rock scissors > paper</p>
       </section>
       <section class="difficult-version">DIFFICULT
-        <p class="difficult-rules">rock > scissors &  paper > rock scissors > paper</p>
+        <p class="difficult-rules">rock > scissors & lizzard paper > rock & alien scissors > paper & lizard lizzard > paper  & alien alien > scissors & rock</p>
       </section>
       <section class="fighter-icons-classic hidden">
         <img class="fighter-icon" src="./assets/happy-rocks.png" alt="rock-icon"/>
@@ -30,9 +33,9 @@
         <img class="fighter-icon" src="assets/ufo.png" alt="ufo-icon"/>
       </section>
     </main>
-    <section>
-      <p class="computer-emoji">🖥</p>
-      <p class="computer-title">Coputer</p>
+    <section class="computer-score-section">
+      <p class="player-pic">🖥</p>
+      <p class="player-info">Computer</p>
       <p class="computer-score">Wins: 0</p>
     </section>
   </body>
