@@ -9,6 +9,7 @@ var ufo = document.querySelector('#ufo');
 var fighterIconsClassic = document.querySelector('#fighterIconsClassic');
 var fighterIconsDifficult = document.querySelector('#fighterIconsDifficult');
 var game;
+var chooseHeading = document.querySelector('#chooseHeading');
 
 main.addEventListener('click', gamePlay);
 
@@ -19,12 +20,18 @@ function gamePlay(event) {
   } else {
     var selectedFighter = event.target.id
     game.user.setFighter(selectedFighter);
-
+    
     var randomFighter = game.generateRandomFighter();
     game.computer.setFighter(randomFighter);
     
+    var isDraw = game.checkIfDraw();
+    
+    if(isDraw) {
+      showDraw(event.target)
+    }
+    
     showToken(event.target);
-
+    
     hideInactiveFighters(selectedFighter, randomFighter);
   }
 };
@@ -58,4 +65,13 @@ function displayDifficultVersion() {
   difficultVersion.classList.add('hidden');
   fighterIconsClassic.classList.remove('hidden');
   fighterIconsDifficult.classList.remove('hidden');
+};
+
+function showDraw(fighterElement) {
+  chooseHeading.innerText = '😞 It\'s a draw! 😞'
+  var newFighterElement = fighterElement.cloneNode()
+  fighterElement.parentNode.parentNode.append(newFighterElement);
+
+      // display the computer AND user fighters (one with smiley below)
+      // update inner text to "😞It's a draw!😞"
 };

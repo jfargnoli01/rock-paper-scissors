@@ -33,6 +33,13 @@ class Game {
     return availableFighters[randomIndex];
   };
 
+  checkIfDraw() {
+    if (this.user.fighter === this.computer.fighter) {
+      return true;
+    } 
+    return false;
+  };
+
   checkWinConditions() {
   //if rock selected, will beat scissors and lizard
   //rock
@@ -41,10 +48,6 @@ class Game {
   //alien, will beat scissors and rock 
 
   //update player.wins ++
-  };
-
-  checkIfDraw() {
-    
   };
 
   resetGameBoard() {
