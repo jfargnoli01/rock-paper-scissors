@@ -12,6 +12,8 @@ var game;
 
 main.addEventListener('click', gamePlay);
 
+//user token on fighter click
+
 function gamePlay(event) {
   if (!game) {
     game = new Game();
@@ -20,6 +22,7 @@ function gamePlay(event) {
     var selectedFighter = event.target.id
     game.setFighter(selectedFighter);
     hideInactiveFighters(selectedFighter);
+    showToken(event.target);
   }
 };
 
@@ -32,9 +35,14 @@ function hideInactiveFighters(selectedFighter) {
   for (var i = 0; i < fighters.length; i++) {
     if (fighters[i].id !== selectedFighter) {
       fighters[i].classList.add('hidden');
-    }
+    } 
   }
 };
+
+function showToken(fighterElement) {
+  var userToken = fighterElement.nextElementSibling;
+  userToken.classList.remove('make-transparent');
+}
 
 function displayClassicVersion() {
   classicVersion.classList.add('hidden');
