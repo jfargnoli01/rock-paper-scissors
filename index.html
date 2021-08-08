@@ -11,7 +11,7 @@
     <section class="user-score-section">
       <p class="player-pic">🤓</p>
       <p class="player-info">User</p>
-      <p class="user-score">Wins: 0</p>
+      <p class="player-score">Wins: 0</p>
       <button class="change-game hidden">CHANGE GAME?</button>
     </section>
     <main> 
@@ -29,20 +29,35 @@
         <p class="difficult-rules">lizzard > paper & alien</p>
         <p class="difficult-rules">alien > scissors & rock</p>
       </section>
-      <section id="fighterIconsClassic" class="fighter-icons-classic hidden">
-        <img id="rock" class="fighter-icon" src="./assets/happy-rocks.png" alt="rock-icon"/>
-        <img id="paper" class="fighter-icon" src="./assets/happy-paper.png" alt="paper-icon"/>
-        <img id="scissors" class="fighter-icon" src="./assets/scissors copy.png" alt="scissors-icon"/>
+      <section id="fighterIconsClassic" class="fighter-icons hidden">
+        <div class="fighter-box">
+          <img id="rock" class="fighter-icon" src="./assets/happy-rocks.png" alt="rock-icon"/>
+          <p class="user-token make-transparent">🤓</p>
+        </div>
+        <div class="fighter-box">
+          <img id="paper" class="fighter-icon" src="./assets/happy-paper.png" alt="paper-icon"/>
+          <p class="user-token make-transparent">🤓</p>
+        </div>
+        <div class="fighter-box">
+          <img id="scissors" class="fighter-icon" src="./assets/scissors copy.png" alt="scissors-icon"/>
+          <p class="user-token make-transparent">🤓</p>
+        </div>
       </section>
-      <section id="fighterIconsDifficult" class="fighter-icons-difficult hidden">
-        <img id="iguana" class="fighter-icon" src="assets/iguana.png" alt="iguana-icon"/>
-        <img id="ufo" class="fighter-icon" src="assets/ufo.png" alt="ufo-icon"/>
+      <section id="fighterIconsDifficult" class="fighter-icons hidden">
+        <div class="fighter-box">
+          <img id="iguana" class="fighter-icon" src="assets/iguana.png" alt="iguana-icon"/>
+          <p class="user-token make-transparent">🤓</p>
+        </div>
+        <div class="fighter-box">
+          <img id="ufo" class="fighter-icon" src="assets/ufo.png" alt="ufo-icon"/>          
+          <p class="user-token make-transparent">🤓</p>
+        </div>
       </section>
     </main>
     <section class="computer-score-section">
       <p class="player-pic">🖥</p>
       <p class="player-info">Computer</p>
-      <p class="computer-score">Wins: 0</p>
+      <p class="player-score">Wins: 0</p>
     </section>
   </body>
   <script type="text/javascript" src="main.js"></script>

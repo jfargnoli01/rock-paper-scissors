@@ -12,19 +12,6 @@ body {
   text-align: center; 
 }
 
-.classic-version, 
-.difficult-version {
-  background-color: #F19E6A;
-  margin: 20px 0 20px 0;
-  padding: 20px;
-  width: 200px;
-}
-
-.classic-rules, 
-.difficult-rules {
-  margin: 2px;
-}
-
 main {
   align-items: center;
   background-color: #F38D4F;
@@ -41,8 +28,51 @@ h1 {
   margin: 50px 0 0 0;
 }
 
+.classic-version, 
+.difficult-version {
+  background-color: #F19E6A;
+  cursor: pointer;
+  margin: 20px 0 20px 0;
+  padding: 20px;
+  width: 200px;
+}
+
+.classic-rules, 
+.difficult-rules {
+  margin: 2px;
+}
+
 .choose-heading {
   margin: 8px 0 72px 0;
+}
+
+.fighter-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 200px;
+  width: 50px;
+}
+
+.fighter-icon {
+  cursor: pointer;
+  height: 160px;
+  padding: 20px;
+  width: 160px;
+}
+
+.user-token {
+  font-size: 32px;
+  margin: 0;  
+}
+
+.make-transparent {
+  color: transparent;
+}
+
+.fighter-box {
+  display: flex;
+  flex-direction: column;
 }
 
 .user-score-section,
@@ -54,14 +84,19 @@ h1 {
   width: 200px;
 }
 
-.player-info {
-  font-size: x-large;
-  margin: 0;
+.player-pic {
+  font-size: 44px;
+  margin: 40px 0 0 0;
 }
 
-.player-pic {
-  font-size: xx-large;
-  margin: 40px 0 8px 0;
+.player-info {
+  font-size: x-large;
+  margin: 0 0 10px 0;
+}
+
+.player-score {
+  font-size: large;
+  font-weight: 200;
 }
 
 .hidden {

@@ -8,13 +8,44 @@ var iguana = document.querySelector('#iguana');
 var ufo = document.querySelector('#ufo');
 var fighterIconsClassic = document.querySelector('#fighterIconsClassic');
 var fighterIconsDifficult = document.querySelector('#fighterIconsDifficult');
+var game;
 
-main.addEventListener('click', selectGameType);
+main.addEventListener('click', gamePlay);
+
+function gamePlay(event) {
+  if (!game) {
+    game = new Game();
+    selectGameType(event);
+  } else {
+    var selectedFighter = event.target.id
+    game.user.setFighter(selectedFighter);
+
+    var randomFighter = game.generateRandomFighter();
+    game.computer.setFighter(randomFighter);
+    
+    showToken(event.target);
+
+    hideInactiveFighters(selectedFighter, randomFighter);
+  }
+};
 
 function selectGameType(event) {
-  var game = new Game();
   game.checkGameType(event.target);
 };
+
+function hideInactiveFighters(selectedFighter, randomFighter) {
+  var fighters = document.querySelectorAll('.fighter-icon');
+  for (var i = 0; i < fighters.length; i++) {
+    if (fighters[i].id !== selectedFighter && fighters[i].id !== randomFighter) {
+      fighters[i].classList.add('hidden');
+    } 
+  }
+};
+
+function showToken(fighterElement) {
+  var userToken = fighterElement.nextElementSibling;
+  userToken.classList.remove('make-transparent');
+}
 
 function displayClassicVersion() {
   classicVersion.classList.add('hidden');
