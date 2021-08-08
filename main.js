@@ -15,17 +15,25 @@ main.addEventListener('click', gamePlay);
 function gamePlay(event) {
   if (!game) {
     game = new Game();
-    selectGameType(event)
-    } else {
-    // event.target matches id of each fighter
-    
-    console.log(event.target.id);
+    selectGameType(event);
+  } else {
+    var selectedFighter = event.target.id
+    game.setFighter(selectedFighter);
+    hideInactiveFighters(selectedFighter);
   }
-  //select fighter
 };
 
 function selectGameType(event) {
   game.checkGameType(event.target);
+};
+
+function hideInactiveFighters(selectedFighter) {
+  var fighters = document.querySelectorAll('.fighter-icon');
+  for (var i = 0; i < fighters.length; i++) {
+    if (fighters[i].id !== selectedFighter) {
+      fighters[i].classList.add('hidden');
+    }
+  }
 };
 
 function displayClassicVersion() {

@@ -3,6 +3,7 @@ class Game {
     this.user = new Player('User');
     this.computer = new Player('Computer');
     this.gameType = null;
+    this.fighter = null;
   };
 
   keepGameScore() {
@@ -23,10 +24,9 @@ class Game {
     }
   };
 
-  checkFighterSelected() {
-    //if 
-    //invoke checkWinConditions()?
-  }
+  setFighter(fighter) {
+    this.fighter = fighter;
+  };
 
   checkWinConditions() {
   //if rock selected, will beat scissors and lizard
