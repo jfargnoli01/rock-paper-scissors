@@ -8,11 +8,23 @@ var iguana = document.querySelector('#iguana');
 var ufo = document.querySelector('#ufo');
 var fighterIconsClassic = document.querySelector('#fighterIconsClassic');
 var fighterIconsDifficult = document.querySelector('#fighterIconsDifficult');
+var game;
 
-main.addEventListener('click', selectGameType);
+main.addEventListener('click', gamePlay);
+
+function gamePlay(event) {
+  if (!game) {
+    game = new Game();
+    selectGameType(event)
+    } else {
+    // event.target matches id of each fighter
+    
+    console.log(event.target.id);
+  }
+  //select fighter
+};
 
 function selectGameType(event) {
-  var game = new Game();
   game.checkGameType(event.target);
 };
 

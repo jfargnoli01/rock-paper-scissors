@@ -13,16 +13,20 @@ class Game {
     var isClassicSelected = classicVersion.contains(target);
     var isDifficultSelected = difficultVersion.contains(target);
 
-    if(isClassicSelected) {
+    if (isClassicSelected) {
       this.gameType = 'Classic';
       displayClassicVersion();
     } 
-    if(isDifficultSelected) {
+    if (isDifficultSelected) {
       this.gameType = 'Difficult';
       displayDifficultVersion();
     }
   };
 
+  checkFighterSelected() {
+    //if 
+    //invoke checkWinConditions()?
+  }
 
   checkWinConditions() {
   //if rock selected, will beat scissors and lizard
@@ -30,6 +34,8 @@ class Game {
   //if paper selected, will beat rock and alien
   //if scissors, will beat paper and lizard
   //alien, will beat scissors and rock 
+
+  //update player.wins ++
   };
 
   checkIfDraw() {

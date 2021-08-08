@@ -12,18 +12,6 @@ body {
   text-align: center; 
 }
 
-.classic-version, 
-.difficult-version {
-  background-color: #F19E6A;
-  margin: 20px 0 20px 0;
-  padding: 20px;
-  width: 200px;
-}
-
-.classic-rules, 
-.difficult-rules {
-  margin: 2px;
-}
 
 main {
   align-items: center;
@@ -39,6 +27,18 @@ h1 {
   font-weight: 900;
   font-size: 3.5em;
   margin: 50px 0 0 0;
+}
+.classic-version, 
+.difficult-version {
+  background-color: #F19E6A;
+  margin: 20px 0 20px 0;
+  padding: 20px;
+  width: 200px;
+}
+
+.classic-rules, 
+.difficult-rules {
+  margin: 2px;
 }
 
 .choose-heading {
@@ -68,14 +68,19 @@ h1 {
   width: 200px;
 }
 
-.player-info {
-  font-size: x-large;
-  margin: 0;
-}
-
 .player-pic {
   font-size: xx-large;
-  margin: 40px 0 8px 0;
+  margin: 40px 0 0 0;
+}
+
+.player-info {
+  font-size: x-large;
+  margin: 0 0 10px 0;
+}
+
+.player-score {
+  font-size: large;
+  font-weight: 200;
 }
 
 .hidden {
