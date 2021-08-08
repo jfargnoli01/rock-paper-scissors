@@ -3,7 +3,6 @@ class Game {
     this.user = new Player('User');
     this.computer = new Player('Computer');
     this.gameType = null;
-    this.fighter = null;
   };
 
   keepGameScore() {
@@ -24,8 +23,14 @@ class Game {
     }
   };
 
-  setFighter(fighter) {
-    this.fighter = fighter;
+  generateRandomFighter() {
+    var fightersClassic = ['rock', 'paper', 'scissors'];
+    var fightersDifficult = ['rock', 'paper', 'scissors', 'iguana', 'ufo'];
+
+    var availableFighters = this.gameType === 'Classic' ? fightersClassic : fightersDifficult;
+
+    var randomIndex = Math.floor(Math.random() * availableFighters.length);
+    return availableFighters[randomIndex];
   };
 
   checkWinConditions() {

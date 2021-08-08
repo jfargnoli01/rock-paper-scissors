@@ -12,17 +12,18 @@ var game;
 
 main.addEventListener('click', gamePlay);
 
-//user token on fighter click
-
 function gamePlay(event) {
   if (!game) {
     game = new Game();
     selectGameType(event);
   } else {
     var selectedFighter = event.target.id
-    game.setFighter(selectedFighter);
+    game.user.setFighter(selectedFighter);
+
     hideInactiveFighters(selectedFighter);
+    
     showToken(event.target);
+    var randomFighter = game.generateRandomFighter();
   }
 };
 
