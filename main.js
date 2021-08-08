@@ -20,10 +20,12 @@ function gamePlay(event) {
     var selectedFighter = event.target.id
     game.user.setFighter(selectedFighter);
 
-    hideInactiveFighters(selectedFighter);
+    var randomFighter = game.generateRandomFighter();
+    game.computer.setFighter(randomFighter);
     
     showToken(event.target);
-    var randomFighter = game.generateRandomFighter();
+
+    hideInactiveFighters(selectedFighter, randomFighter);
   }
 };
 
@@ -31,10 +33,10 @@ function selectGameType(event) {
   game.checkGameType(event.target);
 };
 
-function hideInactiveFighters(selectedFighter) {
+function hideInactiveFighters(selectedFighter, randomFighter) {
   var fighters = document.querySelectorAll('.fighter-icon');
   for (var i = 0; i < fighters.length; i++) {
-    if (fighters[i].id !== selectedFighter) {
+    if (fighters[i].id !== selectedFighter && fighters[i].id !== randomFighter) {
       fighters[i].classList.add('hidden');
     } 
   }
