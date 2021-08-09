@@ -11,34 +11,37 @@ var fighterIconsDifficult = document.querySelector('#fighterIconsDifficult');
 var game = new Game();
 var chooseHeading = document.querySelector('#chooseHeading');
 var userScore = document.querySelector('#userScore');
-var computerScore = document.querySelector('#computerScore')
+var computerScore = document.querySelector('#computerScore');
 var changeGameButton = document.querySelector ('#changeGame');
+var clone = document.querySelector('#clone');
 
 main.addEventListener('click', gamePlay);
 changeGameButton.addEventListener('click', changeGame);
 
 function gamePlay(event) {
   if (!game.gameType) {
-    // game = new Game();
     selectGameType(event);
   } else {
+    //user selects fighter
     var selectedFighter = event.target.id
     game.user.takeTurn(selectedFighter);
-    
+    //show token under user fighter
+    showToken(event.target);
+    //generate random computer fighter
     var randomFighter = game.generateRandomFighter();
     game.computer.takeTurn(randomFighter);
-    
+    //hide all players that are not in play
+    hideInactiveFighters(selectedFighter, randomFighter);
+    //check if the computer and user selected same fighter
     var isDraw = game.checkIfDraw();
-
+    //if the fighters match, show draw
     if(isDraw) {
       showDraw(event.target)
     } else {
+      //if not draw, check to see who won!
       game.checkWin();
     }
 
-    showToken(event.target);
-    
-    hideInactiveFighters(selectedFighter, randomFighter);
   }
 };
 
@@ -78,6 +81,8 @@ function displayDifficultVersion() {
 function showDraw(fighterElement) {
   chooseHeading.innerText = '😞 It\'s a draw! 😞';
   var newFighterElement = fighterElement.cloneNode();
+  newFighterElement.id = 'clone';
+  newFighterElement.classList.remove('hidden');
   fighterElement.parentNode.parentNode.append(newFighterElement);
 };
 
@@ -99,6 +104,8 @@ function changeGame() {
   //hide fighter groups
   fighterIconsClassic.classList.add('hidden');
   fighterIconsDifficult.classList.add('hidden');
+
+  clone.classList.add('hidden');
 
   //show all fighters
   showAllFighters();
