@@ -10,6 +10,8 @@ var fighterIconsClassic = document.querySelector('#fighterIconsClassic');
 var fighterIconsDifficult = document.querySelector('#fighterIconsDifficult');
 var game;
 var chooseHeading = document.querySelector('#chooseHeading');
+var userScore = document.querySelector('#userScore');
+var computerScore = document.querySelector('#computerScore')
 
 main.addEventListener('click', gamePlay);
 
@@ -19,17 +21,19 @@ function gamePlay(event) {
     selectGameType(event);
   } else {
     var selectedFighter = event.target.id
-    game.user.setFighter(selectedFighter);
+    game.user.takeTurn(selectedFighter);
     
     var randomFighter = game.generateRandomFighter();
-    game.computer.setFighter(randomFighter);
+    game.computer.takeTurn(randomFighter);
     
     var isDraw = game.checkIfDraw();
-    
+
     if(isDraw) {
       showDraw(event.target)
+    } else {
+      game.checkWin();
     }
-    
+
     showToken(event.target);
     
     hideInactiveFighters(selectedFighter, randomFighter);
@@ -71,7 +75,14 @@ function showDraw(fighterElement) {
   chooseHeading.innerText = '😞 It\'s a draw! 😞'
   var newFighterElement = fighterElement.cloneNode()
   fighterElement.parentNode.parentNode.append(newFighterElement);
+};
 
-      // display the computer AND user fighters (one with smiley below)
-      // update inner text to "😞It's a draw!😞"
+function showUserWin() {
+  chooseHeading.innerText = '🥳 User won this round! 🥳';
+  userScore.innerText = `Wins: ${game.user.wins}`;
+};
+
+function showComputerWin() {
+  chooseHeading.innerText = '🖥 Computer won this round! 🖥';
+  computerScore.innerText = `Wins: ${game.computer.wins}`;
 };
