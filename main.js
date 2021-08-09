@@ -9,6 +9,10 @@ var ufo = document.querySelector('#ufo');
 var fighterIconsClassic = document.querySelector('#fighterIconsClassic');
 var fighterIconsDifficult = document.querySelector('#fighterIconsDifficult');
 var game;
+var chooseHeading = document.querySelector('#chooseHeading');
+var userScore = document.querySelector('#userScore');
+var computerScore = document.querySelector('#computerScore')
+var changeGameButton = document.querySelector ('#changeGame');
 
 main.addEventListener('click', gamePlay);
 
@@ -18,13 +22,21 @@ function gamePlay(event) {
     selectGameType(event);
   } else {
     var selectedFighter = event.target.id
-    game.user.setFighter(selectedFighter);
-
-    var randomFighter = game.generateRandomFighter();
-    game.computer.setFighter(randomFighter);
+    game.user.takeTurn(selectedFighter);
     
-    showToken(event.target);
+    var randomFighter = game.generateRandomFighter();
+    game.computer.takeTurn(randomFighter);
+    
+    var isDraw = game.checkIfDraw();
 
+    if(isDraw) {
+      showDraw(event.target)
+    } else {
+      game.checkWin();
+    }
+
+    showToken(event.target);
+    
     hideInactiveFighters(selectedFighter, randomFighter);
   }
 };
@@ -51,6 +63,7 @@ function displayClassicVersion() {
   classicVersion.classList.add('hidden');
   difficultVersion.classList.add('hidden');
   fighterIconsClassic.classList.remove('hidden');
+  changeGameButton.classList.remove('hidden');
 };
 
 function displayDifficultVersion() {
@@ -58,4 +71,21 @@ function displayDifficultVersion() {
   difficultVersion.classList.add('hidden');
   fighterIconsClassic.classList.remove('hidden');
   fighterIconsDifficult.classList.remove('hidden');
+  changeGameButton.classList.remove('hidden');
+};
+
+function showDraw(fighterElement) {
+  chooseHeading.innerText = '😞 It\'s a draw! 😞';
+  var newFighterElement = fighterElement.cloneNode();
+  fighterElement.parentNode.parentNode.append(newFighterElement);
+};
+
+function showUserWin() {
+  chooseHeading.innerText = '🥳 User won this round! 🥳';
+  userScore.innerText = `Wins: ${game.user.wins}`;
+};
+
+function showComputerWin() {
+  chooseHeading.innerText = '🖥 Computer won this round! 🖥';
+  computerScore.innerText = `Wins: ${game.computer.wins}`;
 };

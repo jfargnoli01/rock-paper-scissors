@@ -6,7 +6,7 @@ class Player {
     this.fighter = null; 
   };
 
-  setFighter(fighter) {
+  takeTurn(fighter) {
     this.fighter = fighter;
   };
 
@@ -15,10 +15,6 @@ class Player {
   };
 
   retrieveWinsFromStorage() {
-
-  };
-
-  takeTurn() {
 
   };
 };
