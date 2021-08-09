@@ -12,6 +12,7 @@ var game;
 var chooseHeading = document.querySelector('#chooseHeading');
 var userScore = document.querySelector('#userScore');
 var computerScore = document.querySelector('#computerScore')
+var changeGameButton = document.querySelector ('#changeGame');
 
 main.addEventListener('click', gamePlay);
 
@@ -62,6 +63,7 @@ function displayClassicVersion() {
   classicVersion.classList.add('hidden');
   difficultVersion.classList.add('hidden');
   fighterIconsClassic.classList.remove('hidden');
+  changeGameButton.classList.remove('hidden');
 };
 
 function displayDifficultVersion() {
@@ -69,11 +71,12 @@ function displayDifficultVersion() {
   difficultVersion.classList.add('hidden');
   fighterIconsClassic.classList.remove('hidden');
   fighterIconsDifficult.classList.remove('hidden');
+  changeGameButton.classList.remove('hidden');
 };
 
 function showDraw(fighterElement) {
-  chooseHeading.innerText = '😞 It\'s a draw! 😞'
-  var newFighterElement = fighterElement.cloneNode()
+  chooseHeading.innerText = '😞 It\'s a draw! 😞';
+  var newFighterElement = fighterElement.cloneNode();
   fighterElement.parentNode.parentNode.append(newFighterElement);
 };
 
