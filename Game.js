@@ -5,10 +5,6 @@ class Game {
     this.gameType = null;
   };
 
-  keepGameScore() {
-
-  };
-
   checkGameType(target) {
     var isClassicSelected = classicVersion.contains(target);
     var isDifficultSelected = difficultVersion.contains(target);
@@ -45,43 +41,33 @@ class Game {
     var computer = this.computer.fighter;
     
     if (user === 'rock' && computer === 'scissors') {
-      this.user.wins += 1;
       return true;
     }
     if (user === 'rock' && computer === 'iguana') {
-      this.user.wins += 1;
       return true;
     }
     if (user === 'paper' && computer === 'rock') {
-      this.user.wins += 1;
       return true;
     }
     if (user === 'paper' && computer === 'ufo') {
-      this.user.wins += 1;
       return true;
     }
     if (user === 'scissors' && computer === 'paper') {
-      this.user.wins += 1;
       return true;
     }
     if (user === 'scissors' && computer === 'iguana') {
-      this.user.wins += 1;
       return true;
     }
     if (user === 'iguana' && computer === 'paper') {
-      this.user.wins += 1;
       return true;
     }
     if (user === 'iguana' && computer === 'ufo') {
-      this.user.wins += 1;
       return true;
     }
     if (user === 'ufo' && computer === 'scissors') {
-      this.user.wins += 1;
       return true;
     }
     if (user === 'ufo' && computer === 'rock') {
-      this.user.wins += 1;
       return true;
     }
     return false;
@@ -92,61 +78,52 @@ class Game {
     var computer = this.computer.fighter;
     
     if (computer === 'rock' && user === 'scissors') {
-      this.computer.wins += 1;
       return true;
     }
     if (computer === 'rock' && user === 'iguana') {
-      this.computer.wins += 1;
       return true;
     }
     if (computer === 'paper' && user === 'rock') {
-      this.computer.wins += 1;
       return true;
     }
     if (computer === 'paper' && user === 'ufo') {
-      this.computer.wins += 1;
       return true;
     }
     if (computer === 'scissors' && user === 'paper') {
-      this.computer.wins += 1;
       return true;
     }
     if (computer === 'scissors' && user === 'iguana') {
-      this.computer.wins += 1;
       return true;
     }
     if (computer === 'iguana' && user === 'paper') {
-      this.computer.wins += 1;
       return true;
     }
     if (computer === 'iguana' && user === 'ufo') {
-      this.computer.wins += 1;
       return true;
     }
     if (computer === 'ufo' && user === 'scissors') {
-      this.computer.wins += 1;
       return true;
     }
     if (computer === 'ufo' && user === 'rock') {
-      this.computer.wins += 1;
       return true;
     }
     return false;
   };
 
   checkWin() {
-    // this.keepGameScore()
-    // player.saveWinsToStorage()
-    
     if (this.checkIfUserWin()) {
+      this.user.wins += 1;
       showUserWin();
     } else {
       this.checkIfComputerWin();
+      this.computer.wins += 1;
       showComputerWin();
     }
   };
 
   resetGameBoard() {
-
+    this.gameType = null;
+    this.user.fighter = null;
+    this.computer.fighter = null;
   };
 };

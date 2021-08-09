@@ -8,7 +8,7 @@ var iguana = document.querySelector('#iguana');
 var ufo = document.querySelector('#ufo');
 var fighterIconsClassic = document.querySelector('#fighterIconsClassic');
 var fighterIconsDifficult = document.querySelector('#fighterIconsDifficult');
-var game;
+var game = new Game();
 var chooseHeading = document.querySelector('#chooseHeading');
 var userScore = document.querySelector('#userScore');
 var computerScore = document.querySelector('#computerScore')
@@ -18,8 +18,8 @@ main.addEventListener('click', gamePlay);
 changeGameButton.addEventListener('click', changeGame);
 
 function gamePlay(event) {
-  if (!game) {
-    game = new Game();
+  if (!game.gameType) {
+    // game = new Game();
     selectGameType(event);
   } else {
     var selectedFighter = event.target.id
@@ -92,11 +92,39 @@ function showComputerWin() {
 };
 
 function changeGame() {
+  game.resetGameBoard();
+  //show game types:classic / difficult
   classicVersion.classList.remove('hidden');
   difficultVersion.classList.remove('hidden');
+  //hide fighter groups
   fighterIconsClassic.classList.add('hidden');
   fighterIconsDifficult.classList.add('hidden');
+
+  //show all fighters
+  showAllFighters();
+  //hide emoji
+  hideAllTokens();
+  // classList.add('make-transparent');
+  
   changeGameButton.classList.add('hidden');
   chooseHeading.innerText = 'Choose your game!'
+
+
+
   //score should remain from prev games -- local storage (get score) -- will have to save score to storae
-}
+};
+
+function showAllFighters() {
+  var fighters = document.querySelectorAll('.fighter-icon');
+  for (var i = 0; i < fighters.length; i++) {
+    fighters[i].classList.remove('hidden');
+  }
+};
+
+function hideAllTokens() {
+  var tokens = document.querySelectorAll('.user-token');
+  for (var i = 0; i < tokens.length; i++) {
+    tokens[i].classList.add('make-transparent');
+  }
+};
+
