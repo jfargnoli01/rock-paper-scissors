@@ -77,6 +77,7 @@ h1 {
 
 .user-score-section,
 .computer-score-section {
+  align-items: center;
   box-sizing: border-box;
   background-color: #F19E6A;
   display: flex;
@@ -97,6 +98,16 @@ h1 {
 .player-score {
   font-size: large;
   font-weight: 200;
+}
+
+.change-game {
+  background-color: #f0782d;
+  border-style: none;
+  color: white;
+  cursor: pointer;
+  margin-top: 80px;
+  padding: 12px;
+  width: 150px;
 }
 
 .hidden {
