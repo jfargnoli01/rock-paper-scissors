@@ -15,6 +15,7 @@ var computerScore = document.querySelector('#computerScore')
 var changeGameButton = document.querySelector ('#changeGame');
 
 main.addEventListener('click', gamePlay);
+changeGameButton.addEventListener('click', changeGame);
 
 function gamePlay(event) {
   if (!game) {
@@ -89,3 +90,13 @@ function showComputerWin() {
   chooseHeading.innerText = '🖥 Computer won this round! 🖥';
   computerScore.innerText = `Wins: ${game.computer.wins}`;
 };
+
+function changeGame() {
+  classicVersion.classList.remove('hidden');
+  difficultVersion.classList.remove('hidden');
+  fighterIconsClassic.classList.add('hidden');
+  fighterIconsDifficult.classList.add('hidden');
+  changeGameButton.classList.add('hidden');
+  chooseHeading.innerText = 'Choose your game!'
+  //score should remain from prev games -- local storage (get score) -- will have to save score to storae
+}
