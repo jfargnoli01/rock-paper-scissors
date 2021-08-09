@@ -13,7 +13,7 @@ var chooseHeading = document.querySelector('#chooseHeading');
 var userScore = document.querySelector('#userScore');
 var computerScore = document.querySelector('#computerScore');
 var changeGameButton = document.querySelector ('#changeGame');
-var clone = document.querySelector('#clone');
+
 
 main.addEventListener('click', gamePlay);
 changeGameButton.addEventListener('click', changeGame);
@@ -104,8 +104,10 @@ function changeGame() {
   //hide fighter groups
   fighterIconsClassic.classList.add('hidden');
   fighterIconsDifficult.classList.add('hidden');
-
-  clone.classList.add('hidden');
+  
+  //remove clone
+  var clone = document.querySelector('#clone');
+  clone.remove();
 
   //show all fighters
   showAllFighters();
@@ -115,9 +117,6 @@ function changeGame() {
   
   changeGameButton.classList.add('hidden');
   chooseHeading.innerText = 'Choose your game!'
-
-
-
   //score should remain from prev games -- local storage (get score) -- will have to save score to storae
 };
 
