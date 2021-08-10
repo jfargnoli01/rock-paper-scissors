@@ -122,7 +122,7 @@ function changeGame() {
   hide(fighterIconsDifficult);
   resetRound();
   hide(changeGameButton);
-  chooseHeading.innerText = 'Choose your game!'
+  chooseHeading.innerText = 'Choose your game!';
 };
 
 function showAllFighters() {

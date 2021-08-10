@@ -9,7 +9,7 @@ class Game {
       scissors: ['paper', 'lizard'],
       iguana: ['paper', 'alien'],
       alien: ['scissors', 'rock']
-    }
+    };
   };
 
   checkGameType(target) {
@@ -55,11 +55,11 @@ class Game {
   checkWin() {
     if (this.checkIfUserWin()) {
       this.user.wins += 1;
-      this.user.saveWinsToStoarge()
+      this.user.saveWinsToStoarge();
       showUserWin();
     } else {
       this.computer.wins += 1;
-      this.computer.saveWinsToStoarge()
+      this.computer.saveWinsToStoarge();
       showComputerWin();
     }
   };
