@@ -3,6 +3,13 @@ class Game {
     this.user = new Player('User');
     this.computer = new Player('Computer');
     this.gameType = null;
+    this.winConditions = {
+      rock: ['scissors', 'iguana'],
+      paper: ['rock', 'alien'],
+      scissors: ['paper', 'lizard'],
+      iguana: ['paper', 'alien'],
+      alien: ['scissors', 'rock']
+    }
   };
 
   checkGameType(target) {
@@ -40,95 +47,9 @@ class Game {
   checkIfUserWin() {
     var user = this.user.fighter;
     var computer = this.computer.fighter;
-    
-    if (user === 'rock' && computer === 'scissors') {
-      return true;
-    }
+    var doesUserWin = this.winConditions[user].includes(computer);
 
-    if (user === 'rock' && computer === 'iguana') {
-      return true;
-    }
-
-    if (user === 'paper' && computer === 'rock') {
-      return true;
-    }
-
-    if (user === 'paper' && computer === 'ufo') {
-      return true;
-    }
-
-    if (user === 'scissors' && computer === 'paper') {
-      return true;
-    }
-  
-    if (user === 'scissors' && computer === 'iguana') {
-      return true;
-    }
-
-    if (user === 'iguana' && computer === 'paper') {
-      return true;
-    }
-
-    if (user === 'iguana' && computer === 'ufo') {
-      return true;
-    }
-
-    if (user === 'ufo' && computer === 'scissors') {
-      return true;
-    }
-
-    if (user === 'ufo' && computer === 'rock') {
-      return true;
-    }
-
-    return false;
-  };
-
-  checkIfComputerWin() {
-    var user = this.user.fighter;
-    var computer = this.computer.fighter;
-    
-    if (computer === 'rock' && user === 'scissors') {
-      return true;
-    }
-
-    if (computer === 'rock' && user === 'iguana') {
-      return true;
-    }
-
-    if (computer === 'paper' && user === 'rock') {
-      return true;
-    }
-
-    if (computer === 'paper' && user === 'ufo') {
-      return true;
-    }
-
-    if (computer === 'scissors' && user === 'paper') {
-      return true;
-    }
-
-    if (computer === 'scissors' && user === 'iguana') {
-      return true;
-    }
-
-    if (computer === 'iguana' && user === 'paper') {
-      return true;
-    }
-
-    if (computer === 'iguana' && user === 'ufo') {
-      return true;
-    }
-
-    if (computer === 'ufo' && user === 'scissors') {
-      return true;
-    }
-
-    if (computer === 'ufo' && user === 'rock') {
-      return true;
-    }
-
-    return false;
+    return doesUserWin;
   };
 
   checkWin() {
@@ -137,7 +58,6 @@ class Game {
       this.user.saveWinsToStoarge()
       showUserWin();
     } else {
-      this.checkIfComputerWin();
       this.computer.wins += 1;
       this.computer.saveWinsToStoarge()
       showComputerWin();
