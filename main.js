@@ -1,4 +1,4 @@
-var changeGameButton = document.querySelector ('#changeGame');
+var changeGameButton = document.querySelector('#changeGame');
 var chooseHeading = document.querySelector('#chooseHeading');
 var classicVersion = document.querySelector('#classicVersion');
 var computerScore = document.querySelector('#computerScore');
@@ -21,7 +21,7 @@ window.addEventListener('load', loadScore);
 function gamePlay(event) {
   if (!game.gameType) {
     selectGameType(event);
-  } else {
+  } else if (event.target.classList.contains('fighter-icon')) {
     selectFighter(event);
   }
 };
@@ -29,12 +29,12 @@ function gamePlay(event) {
 function selectFighter(event) {
   var selectedFighter = event.target.id
   var randomFighter = game.generateRandomFighter();
-  
+
   game.user.takeTurn(selectedFighter);
   showToken(event.target);
   game.computer.takeTurn(randomFighter);
   setTimeout(resetRound, 3000);
-  hideInactiveFighters(selectedFighter, randomFighter); 
+  hideInactiveFighters(selectedFighter, randomFighter);
   revealOutcome(event);
 };
 
@@ -48,7 +48,7 @@ function hideInactiveFighters(selectedFighter, randomFighter) {
   for (var i = 0; i < fighters.length; i++) {
     if (fighters[i].id !== selectedFighter && fighters[i].id !== randomFighter) {
       hide(fighters[i]);
-    } 
+    }
   }
 };
 
@@ -89,16 +89,22 @@ function showDraw(fighterElement) {
 
   chooseHeading.innerText = '😐 It\'s a draw! 😐';
   fighterElement.parentNode.parentNode.append(newFighterElement);
+  disable(fighterIconsClassic);
+  disable(fighterIconsDifficult);
 };
 
 function showUserWin() {
   chooseHeading.innerText = '🍦😁🍦 User won this round! 🍦😁🍦';
   userScore.innerText = `Wins: ${game.user.wins}`;
+  disable(fighterIconsClassic);
+  disable(fighterIconsDifficult);
 };
 
 function showComputerWin() {
   chooseHeading.innerText = '🤖 Computer won this round! 🤖';
   computerScore.innerText = `Wins: ${game.computer.wins}`;
+  disable(fighterIconsClassic);
+  disable(fighterIconsDifficult);
 };
 
 function resetRound() {
@@ -112,6 +118,8 @@ function resetRound() {
   hideAllTokens();
   chooseHeading.innerText = 'Choose your fighter!';
   show(changeGameButton);
+  enable(fighterIconsClassic);
+  enable(fighterIconsDifficult);
 };
 
 function changeGame() {
@@ -135,7 +143,7 @@ function showAllFighters() {
 
 function hideAllTokens() {
   var tokens = document.querySelectorAll('.user-token');
-  
+
   for (var i = 0; i < tokens.length; i++) {
     tokens[i].classList.add('make-transparent');
   }
@@ -154,4 +162,12 @@ function show(element) {
 
 function hide(element) {
   element.classList.add('hidden');
+};
+
+function disable(element) {
+  element.classList.add('disable-fighters');
+};
+
+function enable(element) {
+  element.classList.remove('disable-fighters');
 };

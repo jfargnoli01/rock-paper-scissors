@@ -5,10 +5,10 @@ class Game {
     this.gameType = null;
     this.winConditions = {
       rock: ['scissors', 'iguana'],
-      paper: ['rock', 'alien'],
+      paper: ['rock', 'ufo'],
       scissors: ['paper', 'lizard'],
-      iguana: ['paper', 'alien'],
-      alien: ['scissors', 'rock']
+      iguana: ['paper', 'ufo'],
+      ufo: ['scissors', 'rock']
     };
   };
 
