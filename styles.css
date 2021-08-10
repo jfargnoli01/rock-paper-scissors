@@ -110,6 +110,13 @@ h1 {
   width: 150px;
 }
 
+.classic-version:hover, 
+.difficult-version:hover,
+.change-game:hover {
+  color: #f0782d;
+  background-color: white;
+}
+
 .hidden {
   display: none;
 }
