@@ -6,7 +6,7 @@ class Game {
     this.winConditions = {
       rock: ['scissors', 'iguana'],
       paper: ['rock', 'ufo'],
-      scissors: ['paper', 'lizard'],
+      scissors: ['paper', 'iguana'],
       iguana: ['paper', 'ufo'],
       ufo: ['scissors', 'rock']
     };

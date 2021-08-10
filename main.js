@@ -5,18 +5,21 @@ var computerScore = document.querySelector('#computerScore');
 var difficultVersion = document.querySelector('#difficultVersion');
 var fighterIconsClassic = document.querySelector('#fighterIconsClassic');
 var fighterIconsDifficult = document.querySelector('#fighterIconsDifficult');
-var game = new Game();
 var main = document.querySelector('main');
 var userScore = document.querySelector('#userScore');
+
+var game = new Game();
 
 main.addEventListener('click', gamePlay);
 changeGameButton.addEventListener('click', changeGame);
 window.addEventListener('load', loadScore);
 
 function gamePlay(event) {
+  var isFighterSelected = event.target.classList.contains('fighter-icon');
+
   if (!game.gameType) {
     selectGameType(event);
-  } else if (event.target.classList.contains('fighter-icon')) {
+  } else if (isFighterSelected) {
     selectFighter(event);
   }
 };
@@ -28,9 +31,9 @@ function selectFighter(event) {
   game.user.takeTurn(selectedFighter);
   showToken(event.target);
   game.computer.takeTurn(randomFighter);
-  setTimeout(resetRound, 3000);
   hideInactiveFighters(selectedFighter, randomFighter);
   revealOutcome(event);
+  setTimeout(resetRound, 3000);
 };
 
 function selectGameType(event) {
@@ -67,6 +70,7 @@ function displayClassicVersion() {
   hide(classicVersion);
   hide(difficultVersion);
   show(fighterIconsClassic);
+  chooseHeading.innerText = 'Choose your fighter!';
 };
 
 function displayDifficultVersion() {
@@ -74,16 +78,17 @@ function displayDifficultVersion() {
   hide(difficultVersion);
   show(fighterIconsClassic);
   show(fighterIconsDifficult);
+  chooseHeading.innerText = 'Choose your fighter!';
 };
 
 function showDraw(fighterElement) {
   var newFighterElement = fighterElement.cloneNode();
 
   newFighterElement.id = 'clone';
+  fighterElement.parentNode.parentNode.append(newFighterElement);
   show(newFighterElement);
 
   chooseHeading.innerText = '😐 It\'s a draw! 😐';
-  fighterElement.parentNode.parentNode.append(newFighterElement);
   disable(fighterIconsClassic);
   disable(fighterIconsDifficult);
 };
