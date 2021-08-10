@@ -6,12 +6,7 @@ var difficultVersion = document.querySelector('#difficultVersion');
 var fighterIconsClassic = document.querySelector('#fighterIconsClassic');
 var fighterIconsDifficult = document.querySelector('#fighterIconsDifficult');
 var game = new Game();
-var iguana = document.querySelector('#iguana');
 var main = document.querySelector('main');
-var paper = document.querySelector('#paper');
-var rock = document.querySelector('#rock');
-var scissors = document.querySelector('#scissors');
-var ufo = document.querySelector('#ufo');
 var userScore = document.querySelector('#userScore');
 
 main.addEventListener('click', gamePlay);
