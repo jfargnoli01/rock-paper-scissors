@@ -3,6 +3,13 @@ class Game {
     this.user = new Player('User');
     this.computer = new Player('Computer');
     this.gameType = null;
+    this.winConditions = {
+      rock: ['scissors', 'iguana'],
+      paper: ['rock', 'ufo'],
+      scissors: ['paper', 'lizard'],
+      iguana: ['paper', 'ufo'],
+      ufo: ['scissors', 'rock']
+    };
   };
 
   checkGameType(target) {
@@ -12,7 +19,8 @@ class Game {
     if (isClassicSelected) {
       this.gameType = 'Classic';
       displayClassicVersion();
-    } 
+    }
+
     if (isDifficultSelected) {
       this.gameType = 'Difficult';
       displayDifficultVersion();
@@ -22,10 +30,9 @@ class Game {
   generateRandomFighter() {
     var fightersClassic = ['rock', 'paper', 'scissors'];
     var fightersDifficult = ['rock', 'paper', 'scissors', 'iguana', 'ufo'];
-
     var availableFighters = this.gameType === 'Classic' ? fightersClassic : fightersDifficult;
-
     var randomIndex = Math.floor(Math.random() * availableFighters.length);
+
     return availableFighters[randomIndex];
   };
 
@@ -33,92 +40,26 @@ class Game {
     if (this.user.fighter === this.computer.fighter) {
       return true;
     } 
+
     return false;
   };
 
   checkIfUserWin() {
     var user = this.user.fighter;
     var computer = this.computer.fighter;
-    
-    if (user === 'rock' && computer === 'scissors') {
-      return true;
-    }
-    if (user === 'rock' && computer === 'iguana') {
-      return true;
-    }
-    if (user === 'paper' && computer === 'rock') {
-      return true;
-    }
-    if (user === 'paper' && computer === 'ufo') {
-      return true;
-    }
-    if (user === 'scissors' && computer === 'paper') {
-      return true;
-    }
-    if (user === 'scissors' && computer === 'iguana') {
-      return true;
-    }
-    if (user === 'iguana' && computer === 'paper') {
-      return true;
-    }
-    if (user === 'iguana' && computer === 'ufo') {
-      return true;
-    }
-    if (user === 'ufo' && computer === 'scissors') {
-      return true;
-    }
-    if (user === 'ufo' && computer === 'rock') {
-      return true;
-    }
-    return false;
-  };
+    var doesUserWin = this.winConditions[user].includes(computer);
 
-  checkIfComputerWin() {
-    var user = this.user.fighter;
-    var computer = this.computer.fighter;
-    
-    if (computer === 'rock' && user === 'scissors') {
-      return true;
-    }
-    if (computer === 'rock' && user === 'iguana') {
-      return true;
-    }
-    if (computer === 'paper' && user === 'rock') {
-      return true;
-    }
-    if (computer === 'paper' && user === 'ufo') {
-      return true;
-    }
-    if (computer === 'scissors' && user === 'paper') {
-      return true;
-    }
-    if (computer === 'scissors' && user === 'iguana') {
-      return true;
-    }
-    if (computer === 'iguana' && user === 'paper') {
-      return true;
-    }
-    if (computer === 'iguana' && user === 'ufo') {
-      return true;
-    }
-    if (computer === 'ufo' && user === 'scissors') {
-      return true;
-    }
-    if (computer === 'ufo' && user === 'rock') {
-      return true;
-    }
-    return false;
+    return doesUserWin;
   };
 
   checkWin() {
     if (this.checkIfUserWin()) {
       this.user.wins += 1;
-      this.user.saveWinsToStoarge()
+      this.user.saveWinsToStoarge();
       showUserWin();
     } else {
-      this.checkIfComputerWin();
       this.computer.wins += 1;
-      this.computer.saveWinsToStoarge()
+      this.computer.saveWinsToStoarge();
       showComputerWin();
     }
   };

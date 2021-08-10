@@ -17,14 +17,14 @@ main {
   background-color: #F38D4F;
   box-sizing:border-box;
   display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: column;
   width: 100%;
 }
 
 h1 {
-  font-weight: 900;
   font-size: 3.5em;
+  font-weight: 900;
   margin: 50px 0 0 0;
 }
 
@@ -115,6 +115,10 @@ h1 {
 .change-game:hover {
   color: #f0782d;
   background-color: white;
+}
+
+.disable-fighters {
+  pointer-events: none;
 }
 
 .hidden {

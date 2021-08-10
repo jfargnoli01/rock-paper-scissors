@@ -1,19 +1,13 @@
-var main = document.querySelector('main');
+var changeGameButton = document.querySelector('#changeGame');
+var chooseHeading = document.querySelector('#chooseHeading');
 var classicVersion = document.querySelector('#classicVersion');
+var computerScore = document.querySelector('#computerScore');
 var difficultVersion = document.querySelector('#difficultVersion');
-var rock = document.querySelector('#rock');
-var paper = document.querySelector('#paper');
-var scissors = document.querySelector('#scissors');
-var iguana = document.querySelector('#iguana');
-var ufo = document.querySelector('#ufo');
 var fighterIconsClassic = document.querySelector('#fighterIconsClassic');
 var fighterIconsDifficult = document.querySelector('#fighterIconsDifficult');
 var game = new Game();
-var chooseHeading = document.querySelector('#chooseHeading');
+var main = document.querySelector('main');
 var userScore = document.querySelector('#userScore');
-var computerScore = document.querySelector('#computerScore');
-var changeGameButton = document.querySelector ('#changeGame');
-
 
 main.addEventListener('click', gamePlay);
 changeGameButton.addEventListener('click', changeGame);
@@ -22,30 +16,21 @@ window.addEventListener('load', loadScore);
 function gamePlay(event) {
   if (!game.gameType) {
     selectGameType(event);
-  } else {
-    //user selects fighter
-    var selectedFighter = event.target.id
-    game.user.takeTurn(selectedFighter);
-    //show token under user fighter
-    showToken(event.target);
-    //generate random computer fighter
-    var randomFighter = game.generateRandomFighter();
-    game.computer.takeTurn(randomFighter);
-    //applying set timeout of 3 sec to our reset round once both players picked
-    setTimeout(resetRound, 3000);
-    //hide all players that are not in play
-    hideInactiveFighters(selectedFighter, randomFighter);
-    //check if the computer and user selected same fighter
-    var isDraw = game.checkIfDraw();
-    //if the fighters match, show draw
-    if(isDraw) {
-      showDraw(event.target)
-    } else {
-      //if not draw, check to see who won!
-      game.checkWin();
-    }
-
+  } else if (event.target.classList.contains('fighter-icon')) {
+    selectFighter(event);
   }
+};
+
+function selectFighter(event) {
+  var selectedFighter = event.target.id
+  var randomFighter = game.generateRandomFighter();
+
+  game.user.takeTurn(selectedFighter);
+  showToken(event.target);
+  game.computer.takeTurn(randomFighter);
+  setTimeout(resetRound, 3000);
+  hideInactiveFighters(selectedFighter, randomFighter);
+  revealOutcome(event);
 };
 
 function selectGameType(event) {
@@ -54,87 +39,106 @@ function selectGameType(event) {
 
 function hideInactiveFighters(selectedFighter, randomFighter) {
   var fighters = document.querySelectorAll('.fighter-icon');
+
   for (var i = 0; i < fighters.length; i++) {
     if (fighters[i].id !== selectedFighter && fighters[i].id !== randomFighter) {
-      fighters[i].classList.add('hidden');
-    } 
+      hide(fighters[i]);
+    }
   }
 };
 
 function showToken(fighterElement) {
   var userToken = fighterElement.nextElementSibling;
+
   userToken.classList.remove('make-transparent');
-}
+};
+
+function revealOutcome(event) {
+  var isDraw = game.checkIfDraw();
+
+  if (isDraw) {
+    showDraw(event.target)
+  } else {
+    game.checkWin();
+  }
+};
 
 function displayClassicVersion() {
-  classicVersion.classList.add('hidden');
-  difficultVersion.classList.add('hidden');
-  fighterIconsClassic.classList.remove('hidden');
+  hide(classicVersion);
+  hide(difficultVersion);
+  show(fighterIconsClassic);
 };
 
 function displayDifficultVersion() {
-  classicVersion.classList.add('hidden');
-  difficultVersion.classList.add('hidden');
-  fighterIconsClassic.classList.remove('hidden');
-  fighterIconsDifficult.classList.remove('hidden');
+  hide(classicVersion);
+  hide(difficultVersion);
+  show(fighterIconsClassic);
+  show(fighterIconsDifficult);
 };
 
 function showDraw(fighterElement) {
-  chooseHeading.innerText = '😞 It\'s a draw! 😞';
   var newFighterElement = fighterElement.cloneNode();
+
   newFighterElement.id = 'clone';
-  newFighterElement.classList.remove('hidden');
+  show(newFighterElement);
+
+  chooseHeading.innerText = '😐 It\'s a draw! 😐';
   fighterElement.parentNode.parentNode.append(newFighterElement);
+  disable(fighterIconsClassic);
+  disable(fighterIconsDifficult);
 };
 
 function showUserWin() {
-  chooseHeading.innerText = '🍦 User won this round! 🍦';
+  chooseHeading.innerText = '🍦😁🍦 User won this round! 🍦😁🍦';
   userScore.innerText = `Wins: ${game.user.wins}`;
+  disable(fighterIconsClassic);
+  disable(fighterIconsDifficult);
 };
 
 function showComputerWin() {
-  chooseHeading.innerText = '🖥 Computer won this round! 🖥';
+  chooseHeading.innerText = '🤖 Computer won this round! 🤖';
   computerScore.innerText = `Wins: ${game.computer.wins}`;
+  disable(fighterIconsClassic);
+  disable(fighterIconsDifficult);
 };
 
 function resetRound() {
   var clone = document.querySelector('#clone');
+
   if (clone) {
     clone.remove();
   }
 
   showAllFighters();
-
   hideAllTokens();
-
   chooseHeading.innerText = 'Choose your fighter!';
-  changeGameButton.classList.remove('hidden');
+  show(changeGameButton);
+  enable(fighterIconsClassic);
+  enable(fighterIconsDifficult);
 };
 
 function changeGame() {
   game.resetGameBoard();
-
-  classicVersion.classList.remove('hidden');
-  difficultVersion.classList.remove('hidden');
- 
-  fighterIconsClassic.classList.add('hidden');
-  fighterIconsDifficult.classList.add('hidden');
-  
+  show(classicVersion);
+  show(difficultVersion);
+  hide(fighterIconsClassic);
+  hide(fighterIconsDifficult);
   resetRound();
-
-  changeGameButton.classList.add('hidden');
-  chooseHeading.innerText = 'Choose your game!'
+  hide(changeGameButton);
+  chooseHeading.innerText = 'Choose your game!';
 };
 
 function showAllFighters() {
   var fighters = document.querySelectorAll('.fighter-icon');
+
   for (var i = 0; i < fighters.length; i++) {
-    fighters[i].classList.remove('hidden');
+    show(fighters[i]);
   }
 };
 
 function hideAllTokens() {
   var tokens = document.querySelectorAll('.user-token');
+
   for (var i = 0; i < tokens.length; i++) {
     tokens[i].classList.add('make-transparent');
   }
@@ -145,4 +149,20 @@ function loadScore() {
   userScore.innerText = `Wins: ${game.user.wins}`;
   game.computer.retrieveWinsFromStorage();
   computerScore.innerText = `Wins: ${game.computer.wins}`;
+};
+
+function show(element) {
+  element.classList.remove('hidden');
+};
+
+function hide(element) {
+  element.classList.add('hidden');
+};
+
+function disable(element) {
+  element.classList.add('disable-fighters');
+};
+
+function enable(element) {
+  element.classList.remove('disable-fighters');
 };
