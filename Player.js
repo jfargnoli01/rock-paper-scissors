@@ -20,6 +20,7 @@ class Player {
 
   retrieveWinsFromStorage() {
     var gameScore = JSON.parse(localStorage.getItem(`${this.name}`));
+
     if (gameScore) {
       this.wins = gameScore.score;
     }

@@ -12,7 +12,8 @@ class Game {
     if (isClassicSelected) {
       this.gameType = 'Classic';
       displayClassicVersion();
-    } 
+    }
+
     if (isDifficultSelected) {
       this.gameType = 'Difficult';
       displayDifficultVersion();
@@ -22,10 +23,9 @@ class Game {
   generateRandomFighter() {
     var fightersClassic = ['rock', 'paper', 'scissors'];
     var fightersDifficult = ['rock', 'paper', 'scissors', 'iguana', 'ufo'];
-
     var availableFighters = this.gameType === 'Classic' ? fightersClassic : fightersDifficult;
-
     var randomIndex = Math.floor(Math.random() * availableFighters.length);
+
     return availableFighters[randomIndex];
   };
 
@@ -33,6 +33,7 @@ class Game {
     if (this.user.fighter === this.computer.fighter) {
       return true;
     } 
+
     return false;
   };
 
@@ -43,33 +44,43 @@ class Game {
     if (user === 'rock' && computer === 'scissors') {
       return true;
     }
+
     if (user === 'rock' && computer === 'iguana') {
       return true;
     }
+
     if (user === 'paper' && computer === 'rock') {
       return true;
     }
+
     if (user === 'paper' && computer === 'ufo') {
       return true;
     }
+
     if (user === 'scissors' && computer === 'paper') {
       return true;
     }
+  
     if (user === 'scissors' && computer === 'iguana') {
       return true;
     }
+
     if (user === 'iguana' && computer === 'paper') {
       return true;
     }
+
     if (user === 'iguana' && computer === 'ufo') {
       return true;
     }
+
     if (user === 'ufo' && computer === 'scissors') {
       return true;
     }
+
     if (user === 'ufo' && computer === 'rock') {
       return true;
     }
+
     return false;
   };
 
@@ -80,33 +91,43 @@ class Game {
     if (computer === 'rock' && user === 'scissors') {
       return true;
     }
+
     if (computer === 'rock' && user === 'iguana') {
       return true;
     }
+
     if (computer === 'paper' && user === 'rock') {
       return true;
     }
+
     if (computer === 'paper' && user === 'ufo') {
       return true;
     }
+
     if (computer === 'scissors' && user === 'paper') {
       return true;
     }
+
     if (computer === 'scissors' && user === 'iguana') {
       return true;
     }
+
     if (computer === 'iguana' && user === 'paper') {
       return true;
     }
+
     if (computer === 'iguana' && user === 'ufo') {
       return true;
     }
+
     if (computer === 'ufo' && user === 'scissors') {
       return true;
     }
+
     if (computer === 'ufo' && user === 'rock') {
       return true;
     }
+
     return false;
   };
 
