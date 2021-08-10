@@ -11,10 +11,15 @@ class Player {
   };
 
   saveWinsToStoarge() {
-    
+    var gameScore = {
+      score: this.wins
+    };
+
+    localStorage.setItem(`${this.name}`, JSON.stringify(gameScore));
   };
 
   retrieveWinsFromStorage() {
-
+    var gameScore = JSON.parse(localStorage.getItem(`${this.name}`));
+    this.wins = gameScore.score;
   };
 };
