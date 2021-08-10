@@ -87,7 +87,7 @@ function showDraw(fighterElement) {
 };
 
 function showUserWin() {
-  chooseHeading.innerText = '🥳 User won this round! 🥳';
+  chooseHeading.innerText = '🍦 User won this round! 🍦';
   userScore.innerText = `Wins: ${game.user.wins}`;
 };
 
