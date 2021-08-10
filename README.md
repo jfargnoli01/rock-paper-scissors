@@ -20,7 +20,7 @@ This application is a virtual rendition of the classic rock-paper-scissors game!
   - The user selects a fighter to face off with the computer's fighter, this will be identified with the user token below the fighter
   - Once both fighters are selected, the game will reveal the outcome of the round
   - The player that chooses the winning opponent wins the round and is awarded a point
-  - If the playes select the same fighter, the round results in a tie - no points awarded
+  - If the players select the same fighter, the round results in a tie - no points awarded
   - Rock defeats scissors and igauana, paper defeats rock and ufo, scissors defeats paper and iguana, iguana defeats paper and ufo, and ufo defeats scissors and rock
 - Once the round is complete, the user can select the 'Change Game?' button to switch to another game version - score will remain and resume
 
