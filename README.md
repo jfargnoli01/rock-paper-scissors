@@ -17,7 +17,7 @@ This application is a virtual rendition of the classic rock-paper-scissors game!
 - Game Details:
   - The Classic Version includes 3 fighters that the user can choose from: rock, paper, and scissors
   - The Difficult Version includes 5 fighters that the user can choose from: rock, paper, scissors, ufo, and iguana
-  - The user selects a fighter to face off with the computer's fighter
+  - The user selects a fighter to face off with the computer's fighter, this will be identified with the user token below the fighter
   - Once both fighters are selected, the game will reveal the outcome of the round
   - The player that chooses the winning opponent wins the round and is awarded a point
   - If the playes select the same fighter, the round results in a tie - no points awarded
