@@ -17,6 +17,7 @@ var changeGameButton = document.querySelector ('#changeGame');
 
 main.addEventListener('click', gamePlay);
 changeGameButton.addEventListener('click', changeGame);
+window.addEventListener('load', loadScore);
 
 function gamePlay(event) {
   if (!game.gameType) {
@@ -139,3 +140,9 @@ function hideAllTokens() {
   }
 };
 
+function loadScore() {
+  game.user.retrieveWinsFromStorage();
+  userScore.innerText = `Wins: ${game.user.wins}`;
+  game.computer.retrieveWinsFromStorage();
+  computerScore.innerText = `Wins: ${game.computer.wins}`;
+};

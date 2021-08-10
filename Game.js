@@ -113,10 +113,12 @@ class Game {
   checkWin() {
     if (this.checkIfUserWin()) {
       this.user.wins += 1;
+      this.user.saveWinsToStoarge()
       showUserWin();
     } else {
       this.checkIfComputerWin();
       this.computer.wins += 1;
+      this.computer.saveWinsToStoarge()
       showComputerWin();
     }
   };
