@@ -1,8 +1,6 @@
 # Rock-Paper-Scissors
 [Deploy Link](https://jfargnoli01.github.io/rock-paper-scissors/)
 
-<img width="1187" alt="Screen Shot 2021-08-10 at 3 25 26 PM" src="https://user-images.githubusercontent.com/77421040/128942714-912d5ca6-f7c5-46c4-8853-477308073642.png">
-
 __Contributor__
 - [Juliana Fargnoli](https://github.com/jfargnoli01)
 
@@ -13,6 +11,8 @@ __Tech Stack__
 
 ## User Information
 This application is a virtual rendition of the classic rock-paper-scissors game! Users can play the classic or difficult versions of the game, keeping score as they progress.
+
+<img width="1187" alt="Screen Shot 2021-08-10 at 3 25 26 PM" src="https://user-images.githubusercontent.com/77421040/128942714-912d5ca6-f7c5-46c4-8853-477308073642.png">
 
 ## How to Use Application
 - From the 'Choose your game!' page view, the user can select either the Classic or Difficult game version they wish to play
